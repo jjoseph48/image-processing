@@ -6,20 +6,19 @@ myFolder = 'D:\TUGAS VEROL\Materi Kuliah Smstr 5\Pemrosesan Citra\Proyek\';
 filepattern = fullfile(myFolder, '*.jpg');
 files = dir(filepattern);
 
-fitur=zeros(18,13);
+fitur=zeros(18,12);
 
-for i=1:3
+for i=1:length(files)
   imageAsli    = imread(files(i).name);
-##  imgAsli      = citra;
   imgBiner     = im2bw(imageAsli);
   imgB         = uint8(imgBiner);
   [baris kolom] = size(imgBiner);
 
   %cari batas atas (top)
-  for i=1 : baris
-    for j=1 : kolom
-      if imgB(i,j) == 1
-        top = baris-i;
+  for s=1 : baris
+    for t=1 : kolom
+      if imgB(s,t) == 1
+        top = baris-s;
         break;
       endif
     endfor
