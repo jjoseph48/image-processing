@@ -1,8 +1,9 @@
-function [meanR, meanG, meanB, varR, varG, varB, skewR, skewG, skewB, kurtR, kurtG, kurtB] = olahCitra(pathCitra)
+function [meanR, meanG, meanB, varR, varG, varB, skewR, skewG, skewB, kurtR, kurtG, kurtB] = olahCitra(citra)
   clear all;
   pkg load image;
 
-  imageAsli    = imread(pathCitra);
+##  imageAsli    = imread(pathCitra);
+  imgAsli      = citra;
   imgBiner     = im2bw(imageAsli);
   imgB         = uint8(imgBiner);
   [baris kolom] = size(imgBiner);
@@ -53,24 +54,24 @@ function [meanR, meanG, meanB, varR, varG, varB, skewR, skewG, skewB, kurtR, kur
   citra = imageAsli(top:bottom,left:right,:);
   [barisBaru kolomBaru, keping]=size(citra);
 
-  citraR = citra(:,:,1);
-  citraG = citra(:,:,2);
-  citraB = citra(:,:,3);
-
-  meanR  = hitungMean(citraR);
-  meanG  = hitungMean(citraG);
-  meanB  = hitungMean(citraB);
-
-  varR   = hitungVarian(citraR,meanR);
-  varG   = hitungVarian(citraG,meanG);
-  varB   = hitungVarian(citraB,meanB);
-
-  skewR  = hitungSkewness(citraR,meanR,varR);
-  skewG  = hitungSkewness(citraG,meanG,varG);
-  skewB  = hitungSkewness(citraB,meanB,varB);
-
-  kurtR = hitungKurtosis(citraR,meanR,varR);
-  kurtG = hitungKurtosis(citraG,meanG,varG);
-  kurtB = hitungKurtosis(citraB,meanB,varB);
+##  citraR = citra(:,:,1);
+##  citraG = citra(:,:,2);
+##  citraB = citra(:,:,3);
+##
+##  meanR  = hitungMean(citraR);
+##  meanG  = hitungMean(citraG);
+##  meanB  = hitungMean(citraB);
+##
+##  varR   = hitungVarian(citraR,meanR);
+##  varG   = hitungVarian(citraG,meanG);
+##  varB   = hitungVarian(citraB,meanB);
+##
+##  skewR  = hitungSkewness(citraR,meanR,varR);
+##  skewG  = hitungSkewness(citraG,meanG,varG);
+##  skewB  = hitungSkewness(citraB,meanB,varB);
+##
+##  kurtR = hitungKurtosis(citraR,meanR,varR);
+##  kurtG = hitungKurtosis(citraG,meanG,varG);
+##  kurtB = hitungKurtosis(citraB,meanB,varB);
 
   endfunction

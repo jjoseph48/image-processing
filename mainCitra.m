@@ -1,27 +1,98 @@
 clear;
 pkg load io;
+pkg load image;
 
 myFolder = 'D:\TUGAS VEROL\Materi Kuliah Smstr 5\Pemrosesan Citra\Proyek\';
 filepattern = fullfile(myFolder, '*.jpg');
 files = dir(filepattern);
 
-fitur=zeros(1,13);
+fitur=zeros(18,13);
 
 for i=1:3
-  [c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12] = olahCitra(files(i).name)
+  imageAsli    = imread(files(i).name);
+##  imgAsli      = citra;
+  imgBiner     = im2bw(imageAsli);
+  imgB         = uint8(imgBiner);
+  [baris kolom] = size(imgBiner);
 
-  fitur(i,1) = c1;
-  fitur(i,2) = c2;
-  fitur(i,3) = c3;
-  fitur(i,4) = c4;
-  fitur(i,5) = c5;
-  fitur(i,6) = c6;
-  fitur(i,7) = c7;
-  fitur(i,8) = c8;
-  fitur(i,9) = c9;
-  fitur(i,10) = c10;
-  fitur(i,11) = c11;
-  fitur(i,12) = c12;
+  %cari batas atas (top)
+  for i=1 : baris
+    for j=1 : kolom
+      if imgB(i,j) == 1
+        top = baris-i;
+        break;
+      endif
+    endfor
+  end
+
+  %cari batas bawah (bottom)
+  for a=1:baris
+    for b=1 : kolom
+      if imgB(a,b) == 1
+        bottom = a;
+        break;
+      endif
+    endfor
+  end
+
+  %cari batas kiri
+  for x=1 : kolom
+    for y=1 : baris
+      if imgB(y,x) == 1
+        left = kolom-x;
+        if left == 0
+          left = 1;
+        endif
+        break;
+      endif
+    endfor
+  end
+
+  %cari batas kanan
+  for p = 1:kolom
+    for q = 1 : baris
+      if imgB(q,p) == 1
+        right = p;
+        break;
+      endif
+    endfor
+  end
+
+  citra = imageAsli(top:bottom,left:right,:);
+  [barisBaru kolomBaru, keping]=size(citra);
+
+  citraR = citra(:,:,1);
+  citraG = citra(:,:,2);
+  citraB = citra(:,:,3);
+
+  meanR  = hitungMean(citraR);
+  meanG  = hitungMean(citraG);
+  meanB  = hitungMean(citraB);
+
+  varR   = hitungVarian(citraR,meanR);
+  varG   = hitungVarian(citraG,meanG);
+  varB   = hitungVarian(citraB,meanB);
+
+  skewR  = hitungSkewness(citraR,meanR,varR);
+  skewG  = hitungSkewness(citraG,meanG,varG);
+  skewB  = hitungSkewness(citraB,meanB,varB);
+
+  kurtR = hitungKurtosis(citraR,meanR,varR);
+  kurtG = hitungKurtosis(citraG,meanG,varG);
+  kurtB = hitungKurtosis(citraB,meanB,varB);
+
+  fitur(i,1) = meanR;
+  fitur(i,2) = meanG;
+  fitur(i,3) = meanB;
+  fitur(i,4) = varR;
+  fitur(i,5) = varG;
+  fitur(i,6) = varB;
+  fitur(i,7) = skewR;
+  fitur(i,8) = skewG;
+  fitur(i,9) = skewB;
+  fitur(i,10) = kurtR;
+  fitur(i,11) = kurtG;
+  fitur(i,12) = kurtB;
 
 end
 
