@@ -14,7 +14,7 @@ fitur=zeros(18,13);
 
 for P=1:3
   label= "";
-  index = 0;
+  index = 1;
   if P == 1
     files = dir(filepattern1);
     label = 1;
@@ -98,19 +98,19 @@ for P=1:3
     kurtG = hitungKurtosis(citraG,meanG,varG);
     kurtB = hitungKurtosis(citraB,meanB,varB);
 
-    fitur(i,1) = meanR;
-    fitur(i,2) = meanG;
-    fitur(i,3) = meanB;
-    fitur(i,4) = varR;
-    fitur(i,5) = varG;
-    fitur(i,6) = varB;
-    fitur(i,7) = skewR;
-    fitur(i,8) = skewG;
-    fitur(i,9) = skewB;
-    fitur(i,10) = kurtR;
-    fitur(i,11) = kurtG;
-    fitur(i,12) = kurtB;
-    fitur(i,13) = label;
+    fitur(index,1) = meanR;
+    fitur(index,2) = meanG;
+    fitur(index,3) = meanB;
+    fitur(index,4) = varR;
+    fitur(index,5) = varG;
+    fitur(index,6) = varB;
+    fitur(index,7) = skewR;
+    fitur(index,8) = skewG;
+    fitur(index,9) = skewB;
+    fitur(index,10) = kurtR;
+    fitur(index,11) = kurtG;
+    fitur(index,12) = kurtB;
+    fitur(index,13) = label;
     index++;
   end
   end
