@@ -12,9 +12,9 @@ filepattern3 = fullfile(myFolder3, '*.jpg');
 
 fitur=zeros(18,13);
 
+index = 1;
 for P=1:3
   label= "";
-  index = 1;
   if P == 1
     files = dir(filepattern1);
     label = 1;
