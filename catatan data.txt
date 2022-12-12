@@ -1,0 +1,26 @@
+<<data lama : 36>>
+
+data segmentasi & non segmentasi
+mentah : 12
+set mateng : 12
+mateng : 12
+
+
+<<data baru : 72>>
+
+data segmentasi & non segmentasi
+mentah : 24
+set mateng : 24
+mateng : 24
+
+<<TOTAL>>
+data : 108
+
+mentah : 36
+set mateng : 36
+mateng : 36
+
+<<RANGKUMAN>>
+Total Data Uji : 6 ( 2 mentah, 2 set mateng, 2 mateng ==> ambil acak)
+
+Total Data Latih : 102 (34 mentah, 34 set mateng, 34 set mateng)

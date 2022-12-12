@@ -10,7 +10,7 @@ filepattern1 = fullfile(myFolder1, '*.jpg');
 filepattern2 = fullfile(myFolder2, '*.jpg');
 filepattern3 = fullfile(myFolder3, '*.jpg');
 
-fitur=zeros(18,13);
+fitur=zeros(54,13);
 
 index = 1;
 for P=1:3
